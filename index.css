@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.smallerNavbar{
+    display: none;
+    width: 100% !important;
+    padding-left: 2%;
+    padding-right: 2%;
+    top: -1px;
+    
+    background-color:  rgb(36, 36, 36);
+}
+
+.largerNavbar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+    background-color:  rgb(36, 36, 36);
+    font-weight: 400;
+    /* justify-content: space-between;
+    align-items:center; */
+    /* position: sticky; */
+    top: -1px;
+    padding: 10px 3%;
+    /* margin-top: 30px; */
+    
+    
+}
+
+.largerNavbar a{
+    text-decoration: none;
+    color: rgb(155, 155, 155)!important;
+    
+    
+}
+
+.navTags{
+    width: 94%;
+    margin-left: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end !important;
+    column-gap: 50px;
+    margin-top: 10px;
+}
+
+#navBrandName{
+    color:white !important;
+    font-family: 'Nunito', sans-serif;
+    font-size: 30px;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#navBrandName:hover{
+    color:  rgb(146, 48, 28) !important;
+}
+
+#currentTab{
+    color: white !important;
+}
+
+.navTags a:hover{
+    text-decoration: underline;
+    color: white !important;
+}
+
+
+.liveSection{
+    margin-top: 63px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* height: 500px; */
+    background-color: rgb(146, 48, 28);
+    padding: 5% 30px;
+}
+.liveBox{
+    width: fit-content;
+    border-right: 3px solid rgba(223, 221, 221, 0.402);
+    padding-right: 50px;
+    
+}
+#LiveVideoHeading{
+    font-size: 20px;
+    font-weight: 700;
+    color:rgb(146, 48, 28);
+    /* background-color: white; */
+    width: fit-content;
+    padding: 0px 10px;
+    border-radius: 10px;
+    animation: mymove 3s infinite;
+}
+@keyframes mymove {
+   0%{
+    background-color: white;
+   }
+   50%{
+    background-color: rgba(255, 255, 255, 0.7);
+   }
+   100%{
+    background-color: white;
+   }
+  }
+#LiveVideo{
+    width: 500px;
+    height: 300px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .9);
+    border-radius: 4px;
+}
+
+#weatherBox{
+    color: rgb(235, 231, 231);
+    margin-left: 50px;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.555);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .9);
+    border: none;
+    
+}
+
+#locNameEntry{
+    color: rgb(235, 231, 231);
+    background-color: rgba(0, 0, 0, 0.319) ;
+    border: 1px solid rgb(146, 48, 28);
+    width: 87%;
+    padding:4px 12px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin: 8px 0;
+    display: inline;
+     margin-right: -5px;
+    
+}
+#submitButton{
+    padding:4px 8px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 1px solid rgb(146, 48, 28);
+    border-left: none !important;
+    
+}
+#weatherBox h5{
+    text-align: center;
+}
+#weatherBox img{
+    display: inline;
+}
+#weatherDisplay{
+    display: inline;
+}
+#weatherBox p{
+    font-size: large;
+    padding-left: 5px;
+}
+#locationName{
+    font-weight: 600;
+    padding-top: 5px;
+    padding-bottom: 7px;
+}
+
+#temperature{
+    font-weight: 500;
+    font-size: xx-large !important;
+}
+@media screen and (max-width:700px) {
+    .largerNavbar{
+        display: none;
+    }
+    .smallerNavbar{
+        display: block;
+    }
+}
+
+
+@media screen and (max-width:1500px) {
+    .liveSection{
+        flex-direction: column;
+        justify-content: center;
+    }
+   
+    .liveBox{
+        border-right: none  ;
+        align-self: center;
+        margin: 0 !important;
+        padding: 0 !important;
+        margin-bottom: 40px !important;
+        align-content: center;
+        align-items: center;
+    }
+    #weatherBox{
+        
+        align-self: center;
+        margin: 0 !important;
+        
+        
+        align-content: center;
+        align-items: center;
+        
+    }
+}
+
+@media screen and (max-width:600px) {
+   
+    #LiveVideo{
+        width: 400px !important;
+        height: 250px !important;
+    }
+}
