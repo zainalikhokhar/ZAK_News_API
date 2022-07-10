@@ -49,8 +49,7 @@ $(document).ready(()=>{
                         $("#weatherDisplay").text('')
                         $("#humidity").text(``)
                         $("#windSpeed").text(``)
-        
-        });
+            });
     }
 
     $("#submitButton").click( () =>{
