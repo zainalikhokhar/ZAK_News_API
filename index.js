@@ -56,6 +56,7 @@ $(document).ready(()=>{
         let location = $(locNameEntry).val()
         var weather_api_url = `http://api.weatherapi.com/v1/current.json?key=2cca4b8a3ae7435e944153027221007&q=${location}&aqi=yes`;
         uploadWeather(weather_api_url)
+        
 
     })
 
