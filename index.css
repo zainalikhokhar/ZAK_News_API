@@ -76,10 +76,10 @@
     width: 100%;
     /* height: 500px; */
     background-color: rgb(146, 48, 28);
-    padding: 5% 30px;
+    padding: 5% 5%;
 }
 .liveBox{
-    width: fit-content;
+    width: 600px;
     border-right: 3px solid rgba(223, 221, 221, 0.402);
     padding-right: 50px;
     
@@ -92,7 +92,7 @@
     width: fit-content;
     padding: 0px 10px;
     border-radius: 10px;
-    animation: mymove 3s infinite;
+    animation: mymove 2.5s infinite;
 }
 @keyframes mymove {
    0%{
@@ -106,20 +106,20 @@
    }
   }
 #LiveVideo{
-    width: 500px;
-    height: 300px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .9);
-    border-radius: 4px;
+    width: 100%;
+    aspect-ratio: 3/2;
+    box-shadow: 0 12px 15px rgba(0, 0, 0, .9);
+    border-radius: 8px;
 }
 
 #weatherBox{
     color: rgb(235, 231, 231);
     margin-left: 50px;
     width: 400px;
-    background-color: rgba(0, 0, 0, 0.555);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .9);
+    box-shadow: 0 12px 15px rgba(0, 0, 0, .9);
     border: none;
     
 }
@@ -127,7 +127,7 @@
 #locNameEntry{
     color: rgb(235, 231, 231);
     background-color: rgba(0, 0, 0, 0.319) ;
-    border: 1px solid rgb(146, 48, 28);
+    border: 1px solid rgb(112, 36, 21);
     width: 87%;
     padding:4px 12px;
     border-top-left-radius: 15px;
@@ -178,7 +178,7 @@
 }
 
 
-@media screen and (max-width:1500px) {
+/* @media screen and (max-width:1500px) {
     .liveSection{
         flex-direction: column;
         justify-content: center;
@@ -210,5 +210,214 @@
     #LiveVideo{
         width: 400px !important;
         height: 250px !important;
+    }
+} */
+
+
+.newsSection{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* height: 500px; */
+    
+    padding: 5% 5%;
+}
+
+.leftNews{
+    width: 600px;
+    border-right: 3px solid rgba(146, 48, 28, 0.6);
+    padding-right: 50px;
+}
+.carousel-inner{
+    box-shadow: 0 10px 15px rgba(0, 0, 0, .5);
+    border-radius: 8px;
+}
+.carousel-inner img{
+    width: 100% !important;
+    
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, .9) !important; */
+    border: none;
+}
+.carousel-inner p{
+    font-weight: 500;
+    background-color:rgba(146, 48, 28, 0.6);
+    padding: 4px 8px;
+    border-radius: 5px;
+
+}
+
+#accordionParent{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.accordion{
+    
+    box-shadow: 0 10px 15px rgba(0, 0, 0, .5);
+    border-radius: 8px;
+}
+.boxHeadings{
+    border-left: 2px solid rgba(146, 48, 28, 0.6);
+    padding: 4px 8px;
+    font-weight: 500 !important;
+    margin-bottom: 15px;
+}
+.accordion-button:focus{
+    background-color:  rgb(180, 48, 22);
+    border: none !important;
+    color: white !important;
+}
+.accordion-button:hover{
+    cursor: pointer;
+    background-color:  rgb(180, 48, 22,0.2);
+    color: black !important;
+}
+#accordionPanelsStayOpenExample h2 button{
+    color: rgb(152, 150, 150);
+    font-weight: 500;
+}
+
+#accordionPanelsStayOpenExample a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+#accordionPanelsStayOpenExample a button{
+    background-color: rgb(180, 48, 22);
+    color: white;
+    /* font-size: 20px; */
+    /* font-weight: 700; */
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, .5);
+    margin-bottom: 15px;
+
+}
+#accordionPanelsStayOpenExample a button:hover{
+    background-color:rgb(142, 37, 17) ;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, .5);
+}
+
+
+
+.rightNews{
+    margin-left: 50px;
+    width: 400px;
+    border-radius: 15px;
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, .9); */
+    border: none;
+    /* padding: 20px; */
+}
+
+.articleBox{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, .5);
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 35px;
+    padding-bottom: 12px;
+}
+
+.articleBox img{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 100%;
+}
+.articleBox p{
+    padding: 0px 25px;
+}
+#articleTitle{
+    padding-top: 15px;
+    color: black;
+    font-weight: 500;
+    font-size: 17px;
+    
+}
+#articleDescription{
+    color: rgb(102, 102, 102);
+}
+.articleBox a{
+    text-decoration: none;
+}
+.articleBox a:hover,#articleTitle:hover {
+    color: rgb(187, 54, 27) !important;
+}
+
+@media screen and (max-width:1050px) {
+    .liveBox{
+        width: 71.5%;
+        padding-right: 4.5%;
+    }
+    #weatherBox{
+        margin-left: 4.5%;
+    }
+    .leftNews{
+        width: 70%;
+        padding-right: 4.5%;
+    }
+    .rightNews{
+        margin-left: 4.5%;
+    }
+}
+
+@media screen and (max-width:770px) {
+    .liveSection{
+        flex-direction: column;
+    }
+    .liveBox{
+        width: 500px;
+        border-right: none;
+        /* padding-right: none; */
+        align-self: center;
+        margin-bottom: 60px;
+        margin-left: 5%;
+    }
+    
+    #weatherBox{
+        margin-left: 0px;
+        align-self: center;
+        width: 400px;
+        margin-bottom: 30px;
+    }
+
+    .newsSection{
+        flex-direction: column;
+        padding: 0;
+        margin-top: 40px;
+    }
+    .leftNews{
+        border: none;
+        padding: none;
+        align-self: center;
+        width: 500px;
+        margin-left: 5%;
+    }
+    .rightNews{
+        margin-left: 0;
+        align-self: center;
+        margin-bottom: 30px;
+    }
+    
+}
+@media screen and (max-width:540px) {
+    .liveBox{
+        width: 98%;
+        margin-left: 0;
+    }
+    #weatherBox{
+        width: 95%;
+        margin-left: 0;
+    }
+    .leftNews{
+        width: 90%;
+        margin-left: 2%;
+    }
+    .rightNews{
+        width: 86%;
+        margin-left: 0%;
+
     }
 }

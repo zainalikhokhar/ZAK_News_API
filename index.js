@@ -1,10 +1,3 @@
-var news_api_url = 'https://newsapi.org/v2/top-headlines?country=gb&apiKey=47398c8b38aa484abab64eed5d060a30';
-
-
-let news_api_response = fetch(news_api_url);
-news_api_response.then((news_api_response) =>{
-    console.log(news_api_response.json())
-})
 
 
 
@@ -31,15 +24,21 @@ $(document).ready(()=>{
     // myFunction()
 
     function uploadWeather(weather_api_url){
+        
         const weatherInfo = fetch(weather_api_url)
-            .then((response) => response.json())
+            .then((response) => {
+                
+                return response.json()
+            })
             .then((obj) => {
+                
                 $("#locationName").text(`Weather in ${obj.location.name}, ${obj.location.country}`)
                 $("#temperature").text(`${obj.current.temp_c}°C`)
                 $("#weatherImg").attr("src",obj.current.condition.icon)
                 $("#weatherDisplay").text(`${obj.current.condition.text}`)
                 $("#humidity").text(`Humidity: ${obj.current.humidity}%`)
                 $("#windSpeed").text(`Wind Speed: ${obj.current.wind_kph} km/h`)
+                document.getElementById("locNameEntry").value = '';
 
             })
             .catch(()=> {$("#temperature").text(`Please enter a valid location`)
@@ -49,16 +48,175 @@ $(document).ready(()=>{
                         $("#weatherDisplay").text('')
                         $("#humidity").text(``)
                         $("#windSpeed").text(``)
+                        document.getElementById("locNameEntry").value = '';
             });
     }
 
     $("#submitButton").click( () =>{
-        let location = $(locNameEntry).val()
+        let location = $("#locNameEntry").val()
+        
         var weather_api_url = `http://api.weatherapi.com/v1/current.json?key=2cca4b8a3ae7435e944153027221007&q=${location}&aqi=yes`;
+        
         uploadWeather(weather_api_url)
         
 
     })
+
+
+
+
+
+    function fillCarousel(fetchedArticles){
+        console.log(fetchedArticles)
+        const carouselBoxes = document.getElementById("carouselBoxes")
+        
+        fetchedArticles.forEach(element => {
+            if (element.urlToImage != null){
+                console.log(element)
+                let newBox = document.createElement("div")
+                newBox.classList.add("carousel-item")
+
+                const att = document.createAttribute("data-bs-interval")
+                att.value = 3000
+                newBox.setAttributeNode(att)
+
+                newBox.innerHTML = `<a href="${element.url}" target="_blank"><img src="${element.urlToImage}" class="d-block" alt="...">
+                <div class="carousel-caption d-md-block">
+                
+                <p>${element.title}</p>
+                </div></a>`
+                
+                carouselBoxes.appendChild(newBox)
+            }
+
+           
+        });
+        
+        let firstBox = document.getElementsByClassName("carousel-item")
+        firstBox[0].classList.add("active")
+        
+    }
+    
+
+    function fillAccordion(fetchedArticles){
+        const accordionBoxes = document.getElementById("accordionPanelsStayOpenExample")
+
+        fetchedArticles.forEach( (element,index) =>{
+            let newAccordion = document.createElement("div")
+            newAccordion.classList.add("accordion-item")
+        if(element.author == null){
+            newAccordion.innerHTML = `<div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-heading${index}">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse${index}" aria-expanded="false" aria-controls="panelsStayOpen-collapse${index}">
+                ${element.title}
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapse${index}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading${index}">
+              <div class="accordion-body">
+                ${element.content.substr(0,200)} <br>
+              </div>
+              <a href="${element.url}"  target="_blacnk"><button id="article_button">View Full Article</button></a>
+            </div>
+          </div>`
+        }
+        else{
+            newAccordion.innerHTML = `<div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-heading${index}">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse${index}" aria-expanded="false" aria-controls="panelsStayOpen-collapse${index}">
+                ${element.title}
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapse${index}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading${index}">
+              <div class="accordion-body">
+                ${element.content.substr(0,200)} <br> - <strong>${element.author}</strong> 
+              </div>
+              <a href="${element.url}"  target="_blacnk"><button id="article_button">View Full Article</button></a>
+            </div>
+          </div>`
+        }
+          
+          accordionBoxes.appendChild(newAccordion)
+        })
+    }
+
+    function fillRight(fetchedArticles){
+        const articleBoxes = document.getElementById("rightNews")
+        // fetchedArticles.forEach( element => {
+        //     let newArticleBox = document.createElement("div")
+        //     newArticleBox.classList.add("articleBox")
+                
+        //     if (element.urlToImage != null){
+        //         let newArticleBox = document.createElement("div")
+        //         newArticleBox.classList.add("articleBox")
+
+        //         newArticleBox.innerHTML = `<img src="${element.urlToImage}" alt="">
+        //         <a href="${element.url}" target="_blank"><p id="articleTitle">${element.title}</p></a>
+        //         <p id="articleDescription">${element.description}</p>
+        //         `
+                    
+        //         articleBoxes.appendChild(newArticleBox)
+                
+        //     }
+        // })
+
+        let counter =0;
+        for (let index = 5; index < fetchedArticles.length; index++) {
+
+            if(counter==5){
+                break;
+            }
+            const element = fetchedArticles[index];
+
+            let newArticleBox = document.createElement("div")
+            newArticleBox.classList.add("articleBox")
+                
+            
+            if (element.urlToImage != null){
+                let newArticleBox = document.createElement("div")
+                newArticleBox.classList.add("articleBox")
+
+                newArticleBox.innerHTML = `<img src="${element.urlToImage}" alt="">
+                <a href="${element.url}" target="_blank"><p id="articleTitle">${element.title}</p></a>
+                <p id="articleDescription">${element.description}</p>
+                `
+                    
+                articleBoxes.appendChild(newArticleBox)
+                counter = counter+1;
+            }
+
+            
+        }
+        // fetchedArticles.forEach( element => {
+        //     let newArticleBox = document.createElement("div")
+        //     newArticleBox.classList.add("articleBox")
+            
+        //     if (element.urlToImage != null){
+        //         newArticleBox.innerHTML = `<img src="${element.urlToImage}" alt="">
+        //         <p id="articleTitle">${element.title}</p>
+        //         <p id="articleDescription">${element.desctiption}</p>
+        //         `
+
+        //     }
+
+        //     articleBoxes.appendChild(newArticleBox)
+        // })
+    }
+
+
+    var news_api_url = 'https://newsapi.org/v2/top-headlines?country=gb&apiKey=47398c8b38aa484abab64eed5d060a30';
+
+
+    let news_api_response = fetch(news_api_url)
+        .then( (news_api_response) => news_api_response.json() )
+        .then( (fetchedArticles) => {
+            
+            fillCarousel(fetchedArticles.articles)
+            fillAccordion(fetchedArticles.articles)
+            fillRight(fetchedArticles.articles)
+        })
+
+
+
 
 })
 
