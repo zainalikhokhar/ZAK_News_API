@@ -1,7 +1,7 @@
 
 
 
-
+/*
 
 // async function myFunction() {
 //     const weather_api_response = await fetch(weather_api_url);
@@ -219,4 +219,8 @@ $(document).ready(()=>{
 
 
 })
+
+
+
+*/
 
