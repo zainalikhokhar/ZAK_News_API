@@ -71,7 +71,7 @@ $(document).ready(()=>{
         const carouselBoxes = document.getElementById("carouselBoxes")
         
         fetchedArticles.forEach(element => {
-            if (element.image != null){
+            if (element.urlToImage != null){
                 console.log(element)
                 let newBox = document.createElement("div")
                 newBox.classList.add("carousel-item")
@@ -80,7 +80,7 @@ $(document).ready(()=>{
                 att.value = 3000
                 newBox.setAttributeNode(att)
 
-                newBox.innerHTML = `<a href="${element.url}" target="_blank"><img src="${element.image}" class="d-block" alt="...">
+                newBox.innerHTML = `<a href="${element.url}" target="_blank"><img src="${element.urlToImage}" class="d-block" alt="...">
                 <div class="carousel-caption d-md-block">
                 
                 <p>${element.title}</p>
@@ -104,7 +104,7 @@ $(document).ready(()=>{
         fetchedArticles.forEach( (element,index) =>{
             let newAccordion = document.createElement("div")
             newAccordion.classList.add("accordion-item")
-        if(element.source.name == null){
+        if(element.author == null){
             newAccordion.innerHTML = `<div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-heading${index}">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse${index}" aria-expanded="false" aria-controls="panelsStayOpen-collapse${index}">
@@ -128,7 +128,7 @@ $(document).ready(()=>{
             </h2>
             <div id="panelsStayOpen-collapse${index}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading${index}">
               <div class="accordion-body">
-                ${element.content.substr(0,200)}... <br> - <strong>${element.source.name}</strong> 
+                ${element.content.substr(0,200)} <br> - <strong>${element.author}</strong> 
               </div>
               <a href="${element.url}"  target="_blacnk"><button id="article_button">View Full Article</button></a>
             </div>
@@ -160,9 +160,9 @@ $(document).ready(()=>{
         // })
 
         let counter =0;
-        for (let index = 2; index < fetchedArticles.length; index++) {
+        for (let index = 5; index < fetchedArticles.length; index++) {
 
-            if(counter==3){
+            if(counter==5){
                 break;
             }
             const element = fetchedArticles[index];
@@ -171,11 +171,11 @@ $(document).ready(()=>{
             newArticleBox.classList.add("articleBox")
                 
             
-            if (element.image != null){
+            if (element.urlToImage != null){
                 let newArticleBox = document.createElement("div")
                 newArticleBox.classList.add("articleBox")
 
-                newArticleBox.innerHTML = `<img src="${element.image}" alt="">
+                newArticleBox.innerHTML = `<img src="${element.urlToImage}" alt="">
                 <a href="${element.url}" target="_blank"><p id="articleTitle">${element.title}</p></a>
                 <p id="articleDescription">${element.description}</p>
                 `
@@ -203,7 +203,7 @@ $(document).ready(()=>{
     }
 
 
-    var news_api_url = 'https://gnews.io/api/v4/search?q=example&country=pk&token=6a78b63efbf72bb6944e6a878cd6d729';
+    var news_api_url = 'https://newsapi.org/v2/top-headlines?country=gb&apiKey=47398c8b38aa484abab64eed5d060a30';
 
 
     let news_api_response = fetch(news_api_url)
