@@ -202,7 +202,7 @@ $(document).ready(()=>{
         // })
     }
 
-
+/*
     var news_api_url = 'https://gnews.io/api/v4/search?q=example&country=pk&token=6a78b63efbf72bb6944e6a878cd6d729';
 
     
@@ -215,7 +215,7 @@ $(document).ready(()=>{
             fillAccordion(fetchedArticles.articles)
             fillRight(fetchedArticles.articles)
         })
-
+*/
 
 
 
