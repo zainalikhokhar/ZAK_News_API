@@ -65,6 +65,7 @@ $(document).ready(()=>{
 
 
 
+    
 
     function fillCarousel(fetchedArticles){
         console.log(fetchedArticles)
@@ -202,12 +203,47 @@ $(document).ready(()=>{
         // })
     }
 
+    function clearNews(){
+      const delCarouselBoxes = document.getElementById("carouselBoxes")
+      const delAccordionBoxes = document.getElementById("accordionPanelsStayOpenExample")
+      const delArticleBoxes = document.getElementById("rightNews")
+      while (delAccordionBoxes.hasChildNodes()) {
+        delAccordionBoxes.removeChild(delAccordionBoxes.firstChild);
+       
+      }
 
-    var newsApiUrl = 'https://gnews.io/api/v4/search?q=example&country=pk&token=6a78b63efbf72bb6944e6a878cd6d729';
+      while (delCarouselBoxes.hasChildNodes()) {
+        delCarouselBoxes.removeChild(delCarouselBoxes.firstChild);
+       
+      }
+
+      while (delArticleBoxes.hasChildNodes()) {
+        delArticleBoxes.removeChild(delArticleBoxes.firstChild);
+      }
+
+    }
+
+    $("#countrySelector").click( () =>{
+     
+      let country = $("#country").val()
+      console.log(country)
+
+      var selected_news_api_url = `https://gnews.io/api/v4/search?q=example&country=${country}&token=6a78b63efbf72bb6944e6a878cd6d729`;
+      let selected_news_api_response = fetch(selected_news_api_url)
+      .then( (selected_news_api_response) => selected_news_api_response.json() )
+      .then( (selected_fetchedArticles) => {
+          clearNews()
+          fillCarousel(selected_fetchedArticles.articles)
+          fillAccordion(selected_fetchedArticles.articles)
+          fillRight(selected_fetchedArticles.articles)
+      })
+    })
+   
+    var news_api_url = 'https://gnews.io/api/v4/search?q=example&country=pk&token=6a78b63efbf72bb6944e6a878cd6d729';
 
     
 
-    let news_api_response = fetch(newsApiUrl)
+    let news_api_response = fetch(news_api_url)
         .then( (news_api_response) => news_api_response.json() )
         .then( (fetchedArticles) => {
             
@@ -215,9 +251,8 @@ $(document).ready(()=>{
             fillAccordion(fetchedArticles.articles)
             fillRight(fetchedArticles.articles)
         })
-
-
-
-
+    
+    
+    
 })
 
