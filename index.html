@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/cdd5127bf3.js" crossorigin="anonymous"></script>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
 
     <title>ZAK News</title>
   </head>
@@ -89,9 +94,24 @@
         </div>
     </section>
     
-
+    
     <section class="newsSection">
       <div class="leftNews">
+        <div class="countrySelector">
+          <div>
+          <label for="country">Select a Country:</label>
+    
+          <select name="country" id="country">
+            <option value="au">Australia</option>
+            <option value="ca">Canada</option>
+            
+            <option selected="selected"value="pk">Pakistan</option>
+            <option value="gb">United Kingdom</option>
+            <option value="us">United States</option>
+          </select>
+          <i id="countrySelector" class="fa-solid fa-check"></i>
+          </div>
+        </div>
         <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
           <h4 class="boxHeadings">Top Stories</h4>
           <div class="carousel-inner" id="carouselBoxes">
@@ -117,9 +137,11 @@
       </div>
 
 
-      <div class="rightNews" id="rightNews">
+      <div class="rightNews" >
         <h4 class="boxHeadings">Editor's Pick</h4>
-        
+        <div  id="rightNews">
+          
+        </div>
       </div>
     </section>
 
